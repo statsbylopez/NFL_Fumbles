@@ -2,37 +2,37 @@ Rushing model:
 
 Random effects:
  Groups Name        Variance Std.Dev.
- off    (Intercept) 0.02477  0.1574  
- def    (Intercept) 0.01702  0.1304  
-Number of obs: 112184, groups:  off, 32; def, 32
+ off    (Intercept) 0.02472  0.1572  
+ def    (Intercept) 0.01704  0.1305  
+Number of obs: 112183, groups:  off, 32; def, 32
 
 Fixed effects:
-                                   Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                       -4.561667   0.092091  -49.53  < 2e-16 ***
-ScoreOffense down 2 Possessions    0.045987   0.081276    0.57 0.571523    
-ScoreOffense down 3+ Possessions   0.088470   0.095019    0.93 0.351813    
-ScoreOffense up 1 Possession      -0.213673   0.067655   -3.16 0.001587 ** 
-ScoreOffense up 2 Possessions     -0.220169   0.086829   -2.54 0.011223 *  
-ScoreOffense up 3+ Possessions    -0.440433   0.106934   -4.12 3.81e-05 ***
-ScoreTIED                         -0.122018   0.067641   -1.80 0.071247 .  
-playcallRun Middle                 1.301717   0.057745   22.54  < 2e-16 ***
-playcallRun Right                 -0.095288   0.070561   -1.35 0.176874     
-FinalMinsTRUE                     -0.073366   0.068130   -1.08 0.281545    
-PlayoffsTRUE                       0.115849   0.112157    1.03 0.301639    
-WeatherOkay                       -0.089837   0.061399   -1.46 0.143420    
-WeatherRisky                       0.180598   0.103431    1.75 0.080800 .  
-GoaltoGoTRUE                       0.055444   0.082736    0.67 0.502779    
-OffHomeTRUE                        0.076168   0.050140    1.52 0.128735    
-DownDistanceSecondLong             0.147748   0.062540    2.36 0.018155 *  
-DownDistanceSecondMed              0.075972   0.086879    0.87 0.381872    
-DownDistanceSecondShort           -0.125419   0.096478   -1.30 0.193610    
-DownDistanceThirdFourthLong        0.848089   0.095224    8.91  < 2e-16 ***
-DownDistanceThirdFourthMed         0.846155   0.124494    6.80 1.07e-11 ***
-DownDistanceThirdFourthShort       0.238541   0.080810    2.95 0.003159 ** 
-sgY                                0.202089   0.056020    3.61 0.000309 ***
-nhY                               -0.135954   0.107518   -1.26 0.206056    
-ou2                               -0.016710   0.028983   -0.58 0.564235    
-spread                            -0.004542   0.004347   -1.05 0.296014    
+                                  Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                      -4.564012   0.091985  -49.62  < 2e-16 ***
+ScoreOffense down 2 Possessions   0.046579   0.081011    0.57 0.565312    
+ScoreOffense down 3+ Possessions  0.087951   0.094763    0.93 0.353349    
+ScoreOffense up 1 Possession     -0.212981   0.067424   -3.16 0.001584 ** 
+ScoreOffense up 2 Possessions    -0.219805   0.086544   -2.54 0.011091 *  
+ScoreOffense up 3+ Possessions   -0.440415   0.106607   -4.13 3.61e-05 ***
+ScoreTIED                        -0.121979   0.067420   -1.81 0.070414 .  
+playcallRun Middle                1.302714   0.057907   22.50  < 2e-16 ***
+playcallRun Right                -0.094379   0.070294   -1.34 0.179394    
+FinalMinsTRUE                    -0.073342   0.067888   -1.08 0.279987    
+PlayoffsTRUE                      0.115174   0.111975    1.03 0.303683    
+WeatherOkay                      -0.089843   0.061343   -1.46 0.143032    
+WeatherRisky                      0.181343   0.103172    1.76 0.078804 .  
+GoaltoGoTRUE                      0.055214   0.082451    0.67 0.503080    
+OffHomeTRUE                       0.076876   0.050037    1.54 0.124447    
+DownDistanceSecondLong            0.148042   0.062328    2.38 0.017539 *  
+DownDistanceSecondMed             0.076599   0.086572    0.88 0.376262    
+DownDistanceSecondShort          -0.124538   0.096125   -1.30 0.195119    
+DownDistanceThirdFourthLong       0.848542   0.094950    8.94  < 2e-16 ***
+DownDistanceThirdFourthMed        0.850428   0.123992    6.86 6.95e-12 ***
+DownDistanceThirdFourthShort      0.239506   0.080523    2.97 0.002936 ** 
+sgY                               0.202014   0.055920    3.61 0.000303 ***
+nhY                              -0.137420   0.107226   -1.28 0.199985    
+ou2                              -0.016551   0.029024   -0.57 0.568503    
+spread                           -0.004582   0.004346   -1.05 0.291761    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
