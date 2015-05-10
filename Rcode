@@ -31,13 +31,11 @@ pbp$Recent<-pbp$seas>=2007
 
 #get rid of kneel downs
 temp<-filter(pbp,kne=="Y",Recent=="TRUE")
-barplot(table(temp$off),col=c(rep("grey",18),"blue",rep("grey",14)),las=2,
-        main= "Total Kneel Downs, 2007-2015")
+barplot(table(temp$off),col=c(rep("grey",18),"blue",rep("grey",14)),las=2,main= "Total Kneel Downs, 2007-2015")
 
 #Spikes exist, too
 temp<-filter(pbp,spk=="Y")
-barplot(table(temp$off),col=c(rep("red",18),"blue",rep("red",14)),
-        main= "Spikes")
+barplot(table(temp$off),col=c(rep("red",18),"blue",rep("red",14)),main= "Spikes")
 
 #Interceptions
 pbp$Intercepted<-pbp$int!=""
@@ -71,8 +69,7 @@ aggregate(Fumble10~Score,FUN="mean",data=pbp)
 aggregate(Fumble10~Score=="Offense up 3+ Possessions",FUN="mean",data=pbp)
 
 temp<-filter(pbp,Score=="Offense up 3+ Possessions",Recent=="TRUE")
-barplot(table(temp$off),col=c(rep("grey",18),"blue",rep("grey",14)),las=2,
-       main= "Plays when ahead by 3+ possessions, 2007-2015")
+barplot(table(temp$off),col=c(rep("grey",18),"blue",rep("grey",14)),las=2,main= "Plays when ahead by 3+ possessions, 2007-2015")
 
 #Rid of the garbage: spikes, kneel downs, interceptions all dropped here
 pbp<-filter(pbp,spk!="Y"&kne!="Y"&Intercepted=="FALSE")
@@ -92,8 +89,7 @@ pbp[pbp$OffHome=="FALSE",]$spread<--1*pbp[pbp$OffHome=="FALSE",]$spread
 #By goal-to-go on the field
 pbp$GoaltoGo<-as.factor(pbp$yfog>90)
 dat<-table(pbp$off,pbp$GoaltoGo)
-barplot(dat[,2],col=c(rep("grey",18),"blue",rep("grey",14)),las=2,
-        main= "Goal to go plays, 2007-2015")
+barplot(dat[,2],col=c(rep("grey",18),"blue",rep("grey",14)),las=2,main= "Goal to go plays, 2007-2015")
 
 #Separate by play type
 aggregate(Fumble10~dir,data=pbp,FUN="mean")
@@ -118,21 +114,15 @@ pbp<-filter(pbp,Recent=="TRUE")
 pbp<-mutate(pbp,ou2=(ou-mean(game$ou))/sd(game$ou))
 
 #Naive fixed effect model
-summary(glm(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome 
-+ DownDistance+sg+nh+ou+spread+off,family=binomial(),data=filter(pbp,type=="RUSH")))
+summary(glm(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome + DownDistance+sg+nh+ou+spread+off,family=binomial(),data=filter(pbp,type=="RUSH")))
 
 #Passing plays, GLMM
 
-fit.pass<-glmer(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome+
-        DownDistance+sg+nh+ou2+spread+(1|off)+(1|def),data=filter(pbp,type=="PASS"),
-        control=glmerControl(optCtrl=list(maxfun=300)),
-      verbose=TRUE,family=binomial())
+fit.pass<-glmer(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome+DownDistance+sg+nh+ou2+spread+(1|off)+(1|def),data=filter(pbp,type=="PASS"),control=glmerControl(optCtrl=list(maxfun=300)),verbose=TRUE,family=binomial())
 summary(fit.pass)
 
 #Running plays, GLMM
-fit.rush<-glmer(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome+
-        DownDistance+sg+nh+ou2+spread+(1|off)+(1|def), data=filter(pbp,type=="RUSH"),
-        control=glmerControl(optCtrl=list(maxfun=300)),verbose=TRUE,family=binomial())
+fit.rush<-glmer(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome+DownDistance+sg+nh+ou2+spread+(1|off)+(1|def), data=filter(pbp,type=="RUSH"),control=glmerControl(optCtrl=list(maxfun=300)),verbose=TRUE,family=binomial())
 summary(fit.rush)
 
 #Graph the random effects
@@ -140,17 +130,11 @@ summary(fit.rush)
 randoms<-ranef(fit.rush, condVar = TRUE)$off
 qq <- attr(ranef(fit.rush, condVar = TRUE)[[1]], "postVar") #The [[1]] is the offensive RE
 rand.interc<-randoms[,1]
-df<-data.frame(Intercepts=randoms[,1],
-      sd.interc=2*sqrt(qq[,,1:length(qq)]),
-      lev.names=rownames(randoms))
+df<-data.frame(Intercepts=randoms[,1],sd.interc=2*sqrt(qq[,,1:length(qq)]),lev.names=rownames(randoms))
 df$lev.names<-factor(df$lev.names,levels=df$lev.names[order(df$Intercepts)])
 df<-df[order(df$Intercepts),]
 library(ggplot2)
-p<- ggplot(df,aes(lev.names,Intercepts,shape=lev.names)) + geom_hline(yintercept=0) +
-  geom_errorbar(aes(ymin=Intercepts-sd.interc, ymax=Intercepts+sd.interc), 
-       width=0,color="black") + geom_point(aes(size=2),pch=16) + 
-  ggtitle("Random effects, rushing plays")+
-  guides(size=FALSE,shape=FALSE) +theme_bw() + xlab("Teams") + ylab("") + coord_flip()
+p<- ggplot(df,aes(lev.names,Intercepts,shape=lev.names)) + geom_hline(yintercept=0) +geom_errorbar(aes(ymin=Intercepts-sd.interc, ymax=Intercepts+sd.interc), width=0,color="black") + geom_point(aes(size=2),pch=16) + ggtitle("Random effects, rushing plays")+guides(size=FALSE,shape=FALSE) +theme_bw() + xlab("Teams") + ylab("") + coord_flip()
 print(p)
 ggsave(plot=p, height=8.6, width=5.47, filename="Lopez-fumbles.pdf",
       useDingbats=FALSE)
