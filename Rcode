@@ -118,24 +118,21 @@ pbp<-filter(pbp,Recent=="TRUE")
 pbp<-mutate(pbp,ou2=(ou-mean(game$ou))/sd(game$ou))
 
 #Naive fixed effect model
-summary(glm(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome
-           + DownDistance+sg+nh+ou+spread+off,family=binomial(),
-            data=filter(pbp,type=="RUSH")))
+summary(glm(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome 
++ DownDistance+sg+nh+ou+spread+off,family=binomial(),data=filter(pbp,type=="RUSH")))
 
 #Passing plays, GLMM
 
 fit.pass<-glmer(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome+
-                  DownDistance+sg+nh+ou2+spread+(1|off)+(1|def)
-                ,data=filter(pbp,type=="PASS"),control=glmerControl(optCtrl=list(maxfun=300)),
-                verbose=TRUE,family=binomial())
+        DownDistance+sg+nh+ou2+spread+(1|off)+(1|def),data=filter(pbp,type=="PASS"),
+        control=glmerControl(optCtrl=list(maxfun=300)),
+      verbose=TRUE,family=binomial())
 summary(fit.pass)
 
 #Running plays, GLMM
 fit.rush<-glmer(Fumble10~Score+playcall+FinalMins+Playoffs+Weather+GoaltoGo+OffHome+
-                       DownDistance+sg+nh+ou2+spread+(1|off)+(1|def),
-                    data=filter(pbp,type=="RUSH"),
-                     control=glmerControl(optCtrl=list(maxfun=300)),
-                     verbose=TRUE,family=binomial())
+        DownDistance+sg+nh+ou2+spread+(1|off)+(1|def), data=filter(pbp,type=="RUSH"),
+        control=glmerControl(optCtrl=list(maxfun=300)),verbose=TRUE,family=binomial())
 summary(fit.rush)
 
 #Graph the random effects
@@ -144,14 +141,14 @@ randoms<-ranef(fit.rush, condVar = TRUE)$off
 qq <- attr(ranef(fit.rush, condVar = TRUE)[[1]], "postVar") #The [[1]] is the offensive RE
 rand.interc<-randoms[,1]
 df<-data.frame(Intercepts=randoms[,1],
-               sd.interc=2*sqrt(qq[,,1:length(qq)]),
-               lev.names=rownames(randoms))
+      sd.interc=2*sqrt(qq[,,1:length(qq)]),
+      lev.names=rownames(randoms))
 df$lev.names<-factor(df$lev.names,levels=df$lev.names[order(df$Intercepts)])
 df<-df[order(df$Intercepts),]
 library(ggplot2)
 p<- ggplot(df,aes(lev.names,Intercepts,shape=lev.names)) + geom_hline(yintercept=0) +
   geom_errorbar(aes(ymin=Intercepts-sd.interc, ymax=Intercepts+sd.interc), 
-                width=0,color="black") + geom_point(aes(size=2),pch=16) + 
+       width=0,color="black") + geom_point(aes(size=2),pch=16) + 
   ggtitle("Random effects, rushing plays")+
   guides(size=FALSE,shape=FALSE) +theme_bw() + xlab("Teams") + ylab("") + coord_flip()
 print(p)
