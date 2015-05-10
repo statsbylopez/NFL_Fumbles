@@ -16,8 +16,7 @@ ScoreOffense up 2 Possessions     -0.220169   0.086829   -2.54 0.011223 *
 ScoreOffense up 3+ Possessions    -0.440433   0.106934   -4.12 3.81e-05 ***
 ScoreTIED                         -0.122018   0.067641   -1.80 0.071247 .  
 playcallRun Middle                 1.301717   0.057745   22.54  < 2e-16 ***
-playcallRun Right                 -0.095288   0.070561   -1.35 0.176874    
-playcallUnknown Pass              16.716076 488.656990    0.03 0.972711    
+playcallRun Right                 -0.095288   0.070561   -1.35 0.176874     
 FinalMinsTRUE                     -0.073366   0.068130   -1.08 0.281545    
 PlayoffsTRUE                       0.115849   0.112157    1.03 0.301639    
 WeatherOkay                       -0.089837   0.061399   -1.46 0.143420    
