@@ -41,41 +41,38 @@ Passing model:
 
 Random effects:
  Groups Name        Variance Std.Dev.
- off    (Intercept) 0.012520 0.11189 
- def    (Intercept) 0.008957 0.09464 
-Number of obs: 261277, groups:  off, 32; def, 32
+ off    (Intercept) 0.008094 0.08996 
+ def    (Intercept) 0.008311 0.09116 
+Number of obs: 149093, groups:  off, 32; def, 32
 
 Fixed effects:
                                   Estimate Std. Error z value Pr(>|z|)    
-(Intercept)                      -5.527266   0.124946  -44.24  < 2e-16 ***
-ScoreOffense down 2 Possessions  -0.020029   0.050575   -0.40 0.692086    
-ScoreOffense down 3+ Possessions -0.037752   0.057169   -0.66 0.509018    
-ScoreOffense up 1 Possession     -0.133729   0.045416   -2.94 0.003235 ** 
-ScoreOffense up 2 Possessions    -0.197773   0.062473   -3.17 0.001547 ** 
-ScoreOffense up 3+ Possessions   -0.259528   0.077160   -3.36 0.000770 ***
-ScoreTIED                        -0.158867   0.046498   -3.42 0.000634 ***
-playcallMiddle Pass               0.757174   0.125666    6.03 1.69e-09 ***
-playcallRun Left                  1.056560   0.122819    8.60  < 2e-16 ***
-playcallRun Middle                2.367066   0.116466   20.32  < 2e-16 ***
-playcallRun Right                 0.962127   0.123878    7.77 8.05e-15 ***
-playcallShort Pass, sideline      0.717515   0.117631    6.10 1.06e-09 ***
-playcallUnknown Pass              3.516049   0.115201   30.52  < 2e-16 ***
-FinalMinsTRUE                     0.063069   0.040290    1.57 0.117489    
-PlayoffsTRUE                      0.097631   0.075815    1.29 0.197831    
-WeatherOkay                      -0.067752   0.041042   -1.65 0.098774 .  
-WeatherRisky                      0.086420   0.071844    1.20 0.229019    
-GoaltoGoTRUE                     -0.131558   0.066612   -1.97 0.048271 *  
-OffHomeTRUE                       0.039688   0.033438    1.19 0.235257    
-DownDistanceSecondLong            0.130893   0.041084    3.19 0.001443 ** 
-DownDistanceSecondMed             0.025149   0.063739    0.39 0.693164    
-DownDistanceSecondShort          -0.118950   0.077564   -1.53 0.125133    
-DownDistanceThirdFourthLong       0.258718   0.051415    5.03 4.85e-07 ***
-DownDistanceThirdFourthMed        0.210089   0.067381    3.12 0.001821 ** 
-DownDistanceThirdFourthShort      0.098449   0.061666    1.60 0.110380    
-sgY                               0.136825   0.036782    3.72 0.000199 ***
-nhY                              -0.054175   0.064700   -0.84 0.402411    
-ou2                              -0.051764   0.019542   -2.65 0.008078 ** 
-spread                           -0.004073   0.002942   -1.38 0.166296    
+(Intercept)                      -5.417782   0.131336  -41.25  < 2e-16 ***
+ScoreOffense down 2 Possessions  -0.058711   0.064735   -0.91  0.36444    
+ScoreOffense down 3+ Possessions -0.099922   0.071724   -1.39  0.16357    
+ScoreOffense up 1 Possession     -0.044302   0.061747   -0.72  0.47308    
+ScoreOffense up 2 Possessions    -0.170222   0.091423   -1.86  0.06262 .  
+ScoreOffense up 3+ Possessions    0.014363   0.113284    0.13  0.89911    
+ScoreTIED                        -0.183683   0.064447   -2.85  0.00437 ** 
+playcallMiddle Pass               0.784712   0.125918    6.23 4.61e-10 ***
+playcallShort Pass, sideline      0.729416   0.117868    6.19 6.08e-10 ***
+playcallUnknown Pass              3.548032   0.115469   30.73  < 2e-16 ***
+FinalMinsTRUE                     0.111251   0.051709    2.15  0.03144 *  
+PlayoffsTRUE                      0.094700   0.102696    0.92  0.35646    
+WeatherOkay                      -0.051641   0.052418   -0.99  0.32454    
+WeatherRisky                      0.006253   0.098354    0.06  0.94931    
+GoaltoGoTRUE                     -0.430855   0.114113   -3.78  0.00016 ***
+OffHomeTRUE                      -0.001735   0.044670   -0.04  0.96901    
+DownDistanceSecondLong            0.080781   0.055085    1.47  0.14252    
+DownDistanceSecondMed            -0.022700   0.094343   -0.24  0.80985    
+DownDistanceSecondShort          -0.048291   0.132910   -0.36  0.71635    
+DownDistanceThirdFourthLong       0.077709   0.061916    1.26  0.20945    
+DownDistanceThirdFourthMed        0.002658   0.080656    0.03  0.97371    
+DownDistanceThirdFourthShort     -0.069961   0.096942   -0.72  0.47049    
+sgY                               0.068239   0.048254    1.41  0.15731    
+nhY                              -0.024374   0.081400   -0.30  0.76461    
+ou2                              -0.071890   0.025408   -2.83  0.00466 ** 
+spread                           -0.003597   0.003822   -0.94  0.34666    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
